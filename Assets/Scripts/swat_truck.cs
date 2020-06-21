@@ -15,7 +15,7 @@ public class swat_truck : MonoBehaviour
     void Start()
     {
         start_pos = swatPosition.position;
-        speed = 4;
+        speed = 10;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, -speed);
     }

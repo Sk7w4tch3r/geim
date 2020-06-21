@@ -17,7 +17,7 @@ public class tow_aqua_move : MonoBehaviour
     void Start()
     {
         start_pos = towPosition.position;
-        speed = 5;
+        speed = 10;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, -speed);
     }

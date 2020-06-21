@@ -13,7 +13,7 @@ public class large_truck : MonoBehaviour
     void Start()
     {
         start_pos1 = truckPosition.position;
-        speed = 2;
+        speed = 10;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, -speed);
     }

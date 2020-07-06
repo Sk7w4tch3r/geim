@@ -11,6 +11,7 @@ public class score : MonoBehaviour
     void Start()
     {
         stillAlive = true;
+        scoreVal = 0f;
     }
 
     // Update is called once per frame
@@ -22,16 +23,4 @@ public class score : MonoBehaviour
         }
         scoreText.text = "Score: " + ((int)scoreVal).ToString();
     }
-
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        if (collisionInfo.collider.tag == "Obstacle")
-        {
-            FindObjectOfType<testMove>().speed = 0;   
-            stillAlive = false;
-            Debug.Log("find object");
-
-        }
-    }
-
 }

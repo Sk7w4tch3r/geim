@@ -2,10 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class leftController : MonoBehaviour
 {
@@ -15,23 +13,36 @@ public class leftController : MonoBehaviour
     public Vector3 leftPos = new Vector3(3f, 0.5f, -9f);
     public Vector3 rightPos = new Vector3(8f, 0.5f, -9f);
     public bool toggle = true;
+    public AudioSource horn_left;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("left"))
         {
+            horn_left = GetComponent<AudioSource>();
             toggle = !toggle;
             if (toggle == true)
             {
+                horn_left.Play();
                 rb.velocity = new Vector3(speed * Time.deltaTime,0,0);
             }
             else
             {
+                horn_left.Play();
                 rb.velocity = new Vector3(-speed * Time.deltaTime, 0, 0);
-
             }
 
             //rb.MovePosition((Vector3)carPosition.position + (leftPos * speed * Time.deltaTime));
+        }
+    }
+    void OnCollisionEnter(Collision CollisionInfo)
+    {
+        if (CollisionInfo.collider.tag == "Obstacle")
+        {
+            
+            Debug.Log(CollisionInfo.collider.name);
+            FindObjectOfType<GameManagerLeft>().GameOver();
         }
     }
 }
